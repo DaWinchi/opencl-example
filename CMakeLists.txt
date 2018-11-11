@@ -3,4 +3,8 @@ set(PROJECT_NAME opencl-test-example)
 project(${PROJECT_NAME})
 set(SOURCES 
         src/main.cpp)
+find_package(OpenCL REQUIRED)
+include_directories( ${OPENCL_INCLUDE_DIR} )
+link_directories(${OpenCL_LIBRARIES})
 add_executable(${PROJECT_NAME} ${SOURCES} )
+target_link_libraries( ${PROJECT_NAME} OpenCL::OpenCL )
